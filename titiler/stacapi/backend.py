@@ -119,9 +119,9 @@ class STACAPIBackend(BaseBackend):
         key=lambda self, geom, **kwargs: hashkey(
             self.api_params["url"],
             str(geom),
-            json.dumps(self.input),
-            json.dumps(self.api_params.get("headers", {})),
-            **kwargs,
+            json.dumps(self.input, sort_keys=True),
+            json.dumps(self.api_params.get("headers", {}), sort_keys=True),
+            json.dumps(kwargs, sort_keys=True, default=str),
         ),
         lock=Lock(),
     )
