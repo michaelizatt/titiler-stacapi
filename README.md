@@ -35,7 +35,7 @@ To install from PyPI and run:
 ```bash
 # Make sure you have pip up to date
 python -m pip install -U pip
-python -m pip  install titiler.stacapi
+python -m pip install titiler.stacapi
 ```
 
 To install from sources and run for development:
@@ -48,7 +48,7 @@ See https://docs.astral.sh/uv/getting-started/installation/ for installation
 git clone https://github.com/developmentseed/titiler-stacapi.git
 cd titiler-stacapi
 
-uv sync
+uv sync --extra server
 ```
 
 ## Launch
@@ -56,9 +56,12 @@ uv sync
 You'll need to have `TITILER_STACAPI_STAC_API_URL` variables set in your environment pointing to your STAC API service.
 
 ```
+# Bash
 export TITILER_STACAPI_STAC_API_URL=https://api.stac
+# Powershell
+$env:TITILER_STACAPI_STAC_API_URL="https://api.stac"
 
-uv run --extra server uvicorn titiler.stacapi.main:app --port 8000
+uv run uvicorn titiler.stacapi.main:app --port 8000 --env-file .env --workers 4
 ```
 
 ### Using Docker
