@@ -2,7 +2,7 @@
 name = "titiler-stacapi"
 description = "Connect titiler to STAC APIs."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.14"
 license = {file = "LICENSE"}
 authors = [
     {name = "Vincent Sarago", email = "vincent@developmentseed.com"},
@@ -44,6 +44,7 @@ dev = [
     "pytest-asyncio",
     "httpx",
     "owslib",
+
 ]
 docs = [
     "black>=23.10.1",
