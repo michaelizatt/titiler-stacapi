@@ -3,7 +3,7 @@
 from typing import Optional
 
 from pydantic import Field, field_validator, model_validator
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing_extensions import Annotated
 
 
@@ -17,11 +17,11 @@ class ApiSettings(BaseSettings):
     debug: bool = False
     template_directory: Optional[str] = None
 
-    model_config = {
-        "env_prefix": "TITILER_STACAPI_API_",
-        "env_file": ".env",
-        "extra": "ignore",
-    }
+    model_config = SettingsConfigDict(
+        env_prefix="TITILER_STACAPI_API_",
+        env_file=".env",
+        extra="ignore"
+    )
 
     @field_validator("cors_origins")
     def parse_cors_origin(cls, v):
@@ -41,11 +41,11 @@ class CacheSettings(BaseSettings):
     # Whether or not caching is enabled
     disable: bool = False
 
-    model_config = {
-        "env_prefix": "TITILER_STACAPI_CACHE_",
-        "env_file": ".env",
-        "extra": "ignore",
-    }
+    model_config = SettingsConfigDict(
+        env_prefix="TITILER_STACAPI_API_",
+        env_file=".env",
+        extra="ignore"
+    )
 
     @model_validator(mode="after")
     def check_enable(self):
@@ -66,11 +66,11 @@ class RetrySettings(BaseSettings):
     # A backoff factor to apply between attempts after the second try
     retry_factor: Annotated[float, Field(ge=0.0)] = 0.0
 
-    model_config = {
-        "env_prefix": "TITILER_STACAPI_API_",
-        "env_file": ".env",
-        "extra": "ignore",
-    }
+    model_config = SettingsConfigDict(
+        env_prefix="TITILER_STACAPI_API_",
+        env_file=".env",
+        extra="ignore"
+    )
 
 
 class STACAPISettings(BaseSettings):
@@ -78,11 +78,11 @@ class STACAPISettings(BaseSettings):
 
     stac_api_url: str
 
-    model_config = {
-        "env_prefix": "TITILER_STACAPI_",
-        "env_file": ".env",
-        "extra": "ignore",
-    }
+    model_config = SettingsConfigDict(
+        env_prefix="TITILER_STACAPI_API_",
+        env_file=".env",
+        extra="ignore"
+    )
 
 
 class ItemsSettings(BaseSettings):
@@ -91,8 +91,8 @@ class ItemsSettings(BaseSettings):
     max_items: int = 100
     items_per_page: int = 10
 
-    model_config = {
-        "env_prefix": "TITILER_STACAPI_",
-        "env_file": ".env",
-        "extra": "ignore",
-    }
+    model_config = SettingsConfigDict(
+        env_prefix="TITILER_STACAPI_API_",
+        env_file=".env",
+        extra="ignore"
+    )
