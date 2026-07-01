@@ -24,6 +24,7 @@ classifiers = [
 dynamic = ["version"]
 dependencies = [
     "orjson",
+    "httpx",
     "titiler-core>=2.0,<2.1",
     "titiler-mosaic>=2.0,<2.1",
     "titiler-extensions>=2.0,<2.1",
@@ -42,7 +43,6 @@ dev = [
     "pytest",
     "pytest-cov",
     "pytest-asyncio",
-    "httpx",
     "owslib",
 
 ]
