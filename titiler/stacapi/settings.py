@@ -79,7 +79,7 @@ class STACAPISettings(BaseSettings):
     stac_api_url: str
 
     model_config = SettingsConfigDict(
-        env_prefix="TITILER_STACAPI_API_",
+        env_prefix="TITILER_STACAPI_",
         env_file=".env",
         extra="ignore"
     )
@@ -92,7 +92,7 @@ class ItemsSettings(BaseSettings):
     items_per_page: int = 10
 
     model_config = SettingsConfigDict(
-        env_prefix="TITILER_STACAPI_API_",
+        env_prefix="TITILER_STACAPI_",
         env_file=".env",
         extra="ignore"
     )
