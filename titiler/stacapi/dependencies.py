@@ -301,4 +301,5 @@ class STACAPIExtensionParams(DefaultDependency):
     def __post_init__(self):
         """Post Init."""
         if self.sortby:
-            self.sortby = self.sortby.split(",")  # type: ignore
+            # Some clients (QGIS) convert the "+" to a space in the tile request.
+            self.sortby = [param.replace(" ", "+", 1) for param in self.sortby.split(",")]  # type: ignore
