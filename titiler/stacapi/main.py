@@ -2,7 +2,7 @@
 
 from typing import Annotated, Any, Literal
 
-import httpx
+import httpx2
 import jinja2
 import morecantile
 import rasterio
@@ -401,7 +401,7 @@ def conformance(
 def ping(request: Request) -> dict:
     """Health check."""
     try:
-        resp = httpx.get(app.state.stac_url)
+        resp = httpx2.get(app.state.stac_url)
         api_online = True if resp.status_code == 200 else False
     except:  # noqa
         api_online = False
